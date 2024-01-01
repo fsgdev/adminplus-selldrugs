@@ -1,4 +1,4 @@
-# fsg_selldrugs
+# [fsg_selldrugs](https://github.com/fsgdev/fsg_selldrugs)
 ### This is stasiek_selldrugsv2 but with added features such as:
 - QBCore & es_extended compatibility (should also work perfectly on QBox)
 - ox_lib notifications and integration
