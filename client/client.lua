@@ -62,7 +62,7 @@ next_ped = function(drugToSell)
 	end
 
 	TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, true)
-	invBusy = true
+	setInvBusy(true)
 	lib.notify({
 		title = Config.notify.title,
 		description = Config.notify.searching .. drugToSell.label,
@@ -86,7 +86,7 @@ next_ped = function(drugToSell)
 			duration = 8000,
 			icon = 'pills'
 		})
-		invBusy = false
+		setInvBusy(false)
 		ClearPedTasks(PlayerPedId())
 		return
 	end
@@ -105,7 +105,7 @@ next_ped = function(drugToSell)
 			duration = 8000,
 			icon = 'pills'
 		})
-		invBusy = false
+		setInvBusy(false)
 		return
 	end
 	
@@ -123,7 +123,7 @@ next_ped = function(drugToSell)
 		while npc.ped ~= nil and npc.ped ~= 0 and not IsEntityDead(npc.ped) do
 			Wait(0)
 			npc.coords = GetEntityCoords(npc.ped)
-			DrawText3D(npc.coords, (Config.notify.client):format(drugToSell.count, drugToSell.label), 0.5)
+			Draw3DText(npc.coords, (Config.notify.client):format(drugToSell.count, drugToSell.label), 0.5)
 			distance = Vdist2(GetEntityCoords(PlayerPedId()), npc.coords)
 
 			if distance >= 2.5 then
@@ -145,7 +145,7 @@ next_ped = function(drugToSell)
 						icon = 'pills',
 						iconColor = '#EE4B2B'
 					})
-					invBusy = false
+					setInvBusy(false)
 					SetPedAsNoLongerNeeded(npc.ped)
 					npc = {}
 				end
@@ -174,14 +174,14 @@ next_ped = function(drugToSell)
 						icon = 'pills',
 						iconColor = '#EE4B2B'
 					})
-					invBusy = false
+					setInvBusy(false)
 					SetPedAsNoLongerNeeded(npc.ped)
 					npc = {}
 				elseif IsControlJustPressed(0, 38) and canSell then
 					canSell = false
 					reject = math.random(1, 6)
 					lib.hideTextUI()
-					invBusy = false
+					setInvBusy(false)
 					if reject <= 3 then
 						lib.notify({
 							title = Config.notify.title,
@@ -198,7 +198,7 @@ next_ped = function(drugToSell)
 							icon = 'pills',
 							iconColor = '#EE4B2B'
 						})
-						invBusy = false
+						setInvBusy(false)
 						PlayAmbientSpeech1(npc.ped, 'GENERIC_HI', 'SPEECH_PARAMS_STANDARD')
 						drugToSell.coords = GetEntityCoords(PlayerPedId())
 						TriggerServerEvent('stasiek_selldrugsv2:notifycops', drugToSell)
@@ -218,7 +218,7 @@ next_ped = function(drugToSell)
 							icon = 'pills',
 							type = 'success'
 						})
-						invBusy = false
+						setInvBusy(false)
 						return
 					end
 
@@ -241,7 +241,7 @@ next_ped = function(drugToSell)
 					PlayAmbientSpeech1(npc.ped, 'GENERIC_THANKS', 'SPEECH_PARAMS_STANDARD')
 					SetPedAsNoLongerNeeded(npc.ped)
 					TriggerServerEvent('stasiek_selldrugsv2:pay', drugToSell)
-					invBusy = false
+					setInvBusy(false)
 					lib.notify({
 						title = Config.notify.title,
 						description = (Config.notify.sold):format(drugToSell.count, drugToSell.label, drugToSell.price),

@@ -7,7 +7,7 @@ function MathRound(value, numDecimalPlaces)
 	end
 end
 
-function Draw3DText()
+function Draw3DText(coords, text, size, font)
 	local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
 
     local camCoords = GetFinalRenderedCamCoord()
@@ -37,15 +37,13 @@ function Draw3DText()
 end
 
 function PlayAnim(dict, anim, speed, time, flag)
-	lib.requestAnimDict(dict, function()
-		TaskPlayAnim(PlayerPedId(), dict, anim, speed, speed, time, flag, 1, false, false, false)
-	end)
+	lib.requestAnimDict(dict)
+	TaskPlayAnim(PlayerPedId(), dict, anim, speed, speed, time, flag, 1, false, false, false)
 end
 
 function PlayAnimOnPed(ped, dict, anim, speed, time, flag)
-	lib.requestAnimDict(dict, function()
-		TaskPlayAnim(ped, dict, anim, speed, speed, time, flag, 1, false, false, false)
-	end)
+	lib.requestAnimDict(dict)
+    TaskPlayAnim(ped, dict, anim, speed, speed, time, flag, 1, false, false, false)
 end
 
 function MakeEntityFaceEntity(entity1, entity2)

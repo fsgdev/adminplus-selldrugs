@@ -1,7 +1,7 @@
 Config = {
     requiredCops = 0,
     npcFightOnReject = true,
-    account = 'money', --change to 'money' if you want
+    account = 'money', -- [money, bank, black_money]
     drugs = {
         ['coke_pooch'] = 150,
         --add as much as you want
