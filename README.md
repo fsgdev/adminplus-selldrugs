@@ -1,20 +1,30 @@
-# adminplus-selldrugs
-
-> This script is to sell your drugs with /dealer
-> This is stasiek_selldrugsv2 but with added features such as:
+# fsg_selldrugs
+### This is stasiek_selldrugsv2 but with added features such as:
 - QBCore, QBox, es_extended compatibility
 - ox_lib notifications and integration
 - cd_dispatch integration
 - anti-drop exploit from inventories to avoid selling your item & still receiving $.
 
-THIS IS NOT MY SCRIPT, THE ORIGINAL CREATOR IS https://github.com/xxxstasiek/stasiek_selldrugsv2 | All I did was modify the notifications & added a anti drop exploit from inventories to avoid selling your item & still receiving $.
+THIS IS NOT MY SCRIPT, THE ORIGINAL CREATOR IS https://github.com/xxxstasiek/stasiek_selldrugsv2 & https://github.com/itsAdminPlus/adminplus-selldrugs
 
-# cd_dispatch integration
+## cd_dispatch integration
 
-[ client sided code ]
-    
+### Client sided code
+
+Replace this from line 42 in client/client.lua
+```
+lib.notify({
+	title = Config.notify.title,
+	description = Config.notify.cops,
+	position = 'center-right',
+	duration = 8000,
+	icon = 'pills'
+})
+```
+to
+```
 local data = exports['cd_dispatch']:GetPlayerInfo()
-	TriggerServerEvent('cd_dispatch:AddNotification', {
+TriggerServerEvent('cd_dispatch:AddNotification', {
     job_table = {'police'}, 
     coords = npc.ped,
     title = '10-15 - Drug Sale',
@@ -31,20 +41,18 @@ local data = exports['cd_dispatch']:GetPlayerInfo()
         sound = 1,
     }
 })
-
--- for cd_dispatch integration add this under line 42 in client.lua & remove
-lib.notify({
-	title = Config.notify.title,
-	description = Config.notify.cops,
-	position = 'center-right',
-	duration = 8000,
-	icon = 'pills'
-})
+```
 
 -----------------------------------------
 
-[ server sided code ]
+### Server sided code
 
+Replace this from line 55 in server/server.lua
+```
+TriggerClientEvent('stasiek_selldrugsv2:notifyPolice', -1, drugToSell.coords)
+```
+to
+```
 TriggerClientEvent('cd_dispatch:AddNotification', -1, {
     job_table = {'police'},
     coords = drugToSell.coords,
@@ -62,6 +70,4 @@ TriggerClientEvent('cd_dispatch:AddNotification', -1, {
         sound = 1,
     }
 })
-
--- for cd_dispatch integration add this under line 55 in server.lua & remove
-TriggerClientEvent('stasiek_selldrugsv2:notifyPolice', -1, drugToSell.coords)
+```
