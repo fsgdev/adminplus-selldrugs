@@ -1,4 +1,6 @@
-	[ client sided code ]
+THIS IS NOT MY SCRIPT, THE ORIGINAL CREATOR IS https://github.com/xxxstasiek/stasiek_selldrugsv2 | All I did was modify the notifications & added a anti drop exploit from inventories to avoid selling your item & still receiving $.
+
+    [ client sided code ]
     
     local data = exports['cd_dispatch']:GetPlayerInfo()
 		TriggerServerEvent('cd_dispatch:AddNotification', {
