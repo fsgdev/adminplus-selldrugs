@@ -5,9 +5,13 @@ author 'adminplus & fsg'
 description 'fsg selldrugs'
 lua54 'yes'
 
-shared_script '@ox_lib/init.lua'
+shared_scripts {
+    '@ox_lib/init.lua',
+    -- '@qbx_core/modules/utils.lua' -- Uncomment if using QBox
+}
 
 client_scripts {
+    -- '@qbx_core/modules/playerdata.lua', -- Uncomment if using QBox
     'bridge/**/client.lua',
     'config.lua',
     'client/functions.lua',
