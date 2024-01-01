@@ -1,6 +1,6 @@
 # fsg_selldrugs
 ### This is stasiek_selldrugsv2 but with added features such as:
-- QBCore & es_extended compatibility (should also work perfectly on QBox
+- QBCore & es_extended compatibility (should also work perfectly on QBox)
 - ox_lib notifications and integration
 - cd_dispatch integration
 - anti-drop exploit from inventories to avoid selling your item & still receiving $.
