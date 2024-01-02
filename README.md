@@ -1,3 +1,4 @@
+![fsg_selldrugs](https://github.com/fsgdev/fsg_selldrugs/assets/101289888/68cfb6b3-72f7-46de-85e1-b744e268e7a0)
 # [fsg_selldrugs](https://github.com/fsgdev/fsg_selldrugs)
 ### This is stasiek_selldrugsv2 but with added features such as:
 - QBCore & es_extended compatibility (should also work perfectly on QBox)
